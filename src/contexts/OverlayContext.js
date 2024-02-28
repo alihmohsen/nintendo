@@ -1,4 +1,3 @@
-// contexts/OverlayContext.js
 import React, { createContext, useState } from 'react';
 
 const OverlayContext = createContext();

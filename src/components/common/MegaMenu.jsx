@@ -1,6 +1,6 @@
-import React, {  useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
-const MegaMenu = ({className = '', onClose, children ,isOpenMenu }) => {
+const MegaMenu = ({ className = "", onClose, children, isOpenMenu }) => {
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -10,13 +10,12 @@ const MegaMenu = ({className = '', onClose, children ,isOpenMenu }) => {
       }
     };
 
-    document.body.addEventListener('click', handleClickOutside);
+    document.body.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.body.removeEventListener('click', handleClickOutside);
+      document.body.removeEventListener("click", handleClickOutside);
     };
   }, [onClose]); // Include onClose in the dependency array
-
 
   // Prevent event propagation
   const handleContentClick = (event) => {
@@ -25,16 +24,20 @@ const MegaMenu = ({className = '', onClose, children ,isOpenMenu }) => {
 
   return (
     <>
-    <div ref={menuRef} className={`absolute mega-menu ${isOpenMenu ? 'open' : ''} ${className}`} onClick={handleContentClick}>
-      <button className="close-mega-box-button" onClick={onClose}>
-      <IoMdCloseCircle />
-      </button>
-      <div className="menu-items" >
-        <div className="menu-content">
-          {children}
+      <div
+        ref={menuRef}
+        className={`absolute mega-menu ${
+          isOpenMenu ? "open" : ""
+        } ${className}`}
+        onClick={handleContentClick}
+      >
+        <button className="close-mega-box-button" onClick={onClose}>
+          <IoMdCloseCircle />
+        </button>
+        <div className="menu-items">
+          <div className="menu-content">{children}</div>
         </div>
       </div>
-    </div>
     </>
   );
 };

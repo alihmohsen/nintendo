@@ -1,4 +1,4 @@
-import React, { useState , useRef ,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdFavorite } from "react-icons/md";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
@@ -11,14 +11,13 @@ const MobileNavbar = ({ onClose }) => {
   const [OpenLoginForm, SetOpenLoginForm] = useState(false);
   const menuRef = useRef(null);
 
-
   const LoginFormClickToggle = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     SetOpenMenu(false);
     SetOpenLoginForm(!OpenLoginForm);
   };
   const MenuClickToggle = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     SetOpenLoginForm(false);
     SetOpenMenu(!OpenMenu);
   };
@@ -26,17 +25,16 @@ const MobileNavbar = ({ onClose }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        SetOpenLoginForm(false); 
+        SetOpenLoginForm(false);
         SetOpenMenu(false);
-
       }
     };
-    document.body.addEventListener('click', handleClickOutside);
+    document.body.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.body.removeEventListener('click', handleClickOutside);
+      document.body.removeEventListener("click", handleClickOutside);
     };
-  }, []); 
+  }, []);
 
   return (
     <>
@@ -84,8 +82,8 @@ const MobileNavbar = ({ onClose }) => {
                 <IoMdCloseCircle />
               </button>
             </div>
-            <div  className="py-2">
-               <LoginForm onClose={onClose} className="px-4" />
+            <div className="py-2">
+              <LoginForm onClose={onClose} className="px-4" />
             </div>
           </div>
           <div className={`mobile-menu-box ${OpenMenu ? "open" : ""}`}>
@@ -95,13 +93,17 @@ const MobileNavbar = ({ onClose }) => {
                 <IoMdCloseCircle />
               </button>
             </div>
-            <div >
-               <MobileMenu onClose={onClose} className="" />
+            <div>
+              <MobileMenu onClose={onClose} className="" />
             </div>
           </div>
         </div>
       </div>
-      <div  className={` lg:hidden  ${OpenLoginForm || OpenMenu ? 'overlay open' : ''}`}></div>
+      <div
+        className={` lg:hidden  ${
+          OpenLoginForm || OpenMenu ? "overlay open" : ""
+        }`}
+      ></div>
     </>
   );
 };

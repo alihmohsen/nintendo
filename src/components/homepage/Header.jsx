@@ -81,7 +81,7 @@ const Header = () => {
   const navbarRef = useRef(null);
   const megaMenuRef = useRef(null);
   useEffect(() => {
-    const handleOutsideClickSearchBar = (event) => {
+    const handleClickOutside = (event) => {
       if (
         navbarRef.current &&
         !navbarRef.current.contains(event.target) &&
@@ -90,29 +90,18 @@ const Header = () => {
       ) {
         setActiveInputSearch(false);
       }
+      setActiveListCategories(false);
     };
 
-    document.addEventListener("click", handleOutsideClickSearchBar);
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener("click", handleOutsideClickSearchBar);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = () => {
-      setActiveListCategories(false); // Reset rotation when clicking outside the SVG
-    };
-
-    document.body.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.body.removeEventListener("click", handleClickOutside);
-    };
-  }, []); // Empty dependency array to ensure the effect only runs once
-
   const handleSvgClick = (e) => {
-    e.stopPropagation(); // Prevent body click event from firing when clicking on SVG
+    e.stopPropagation();
     setActiveListCategories(!activeListCategories);
   };
 
