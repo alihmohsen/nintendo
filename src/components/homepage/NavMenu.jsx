@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MegaMenu from "../common/MegaMenu";
-import { MdGames, MdOutlineStar } from "react-icons/md";
+import {
+  MdGames,
+  MdOutlineStar,
+  MdGamepad,
+  MdCompareArrows,
+  MdOnlinePrediction,
+} from "react-icons/md";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { HiNewspaper } from "react-icons/hi2";
-import { FaTshirt, FaChevronDown } from "react-icons/fa";
+import { FaTshirt, FaChevronDown, FaCalendarAlt } from "react-icons/fa";
 import { IoLogoGameControllerB } from "react-icons/io";
-import { GiCharacter } from "react-icons/gi";
+import { GiCharacter, GiMegaphone } from "react-icons/gi";
 import { AiFillTag } from "react-icons/ai";
+import { RiParentFill } from "react-icons/ri";
+import { FaFaceGrinWide, FaShop } from "react-icons/fa6";
+import { LuGamepad } from "react-icons/lu";
+
 const NavMenu = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const handleMenuToggle = (e, menuId) => {
@@ -61,7 +71,6 @@ const NavMenu = () => {
                 </span>
                 <span>My Nintendo Store</span>
                 <span className="arrow-icon">
-                  
                   <FaChevronDown
                     className={`arrow transform transition-transform duration-300  `}
                   />
@@ -229,7 +238,6 @@ const NavMenu = () => {
                 </span>
                 <span>Games</span>
                 <span className="arrow-icon">
-                  
                   <FaChevronDown
                     className={`arrow transform transition-transform duration-300  `}
                   />
@@ -239,8 +247,36 @@ const NavMenu = () => {
               <MegaMenu
                 onClose={handleCloseMegaMenu}
                 isOpenMenu={activeMenu === "menu2" ? true : false}
+                className="h-2"
               >
-                <div>Content for Menu 2</div>
+                <div className="card-info  items-center mx-auto mt-10">
+                  <div className="flex justify-center   gap-10 right-image">
+                    <div className=" box  flex flex-col   text-center ">
+                      <div className="card-icon flex justify-center">
+                        <BsNintendoSwitch />
+                      </div>
+                      <span>Nintendo Switch games</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <GiMegaphone />
+                      </div>
+                      <span>New releases</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <FaCalendarAlt />
+                      </div>
+                      <span>Coming soon</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <MdGamepad />
+                      </div>
+                      <span>Shop games</span>
+                    </div>
+                  </div>
+                </div>
               </MegaMenu>
             </li>
             <li
@@ -253,7 +289,6 @@ const NavMenu = () => {
                 </span>
                 <span>Nintendo Switch</span>
                 <span className="arrow-icon">
-                  
                   <FaChevronDown
                     className={`arrow transform transition-transform duration-300  `}
                   />
@@ -262,8 +297,42 @@ const NavMenu = () => {
               <MegaMenu
                 onClose={handleCloseMegaMenu}
                 isOpenMenu={activeMenu === "menu3" ? true : false}
+                className="h-2"
               >
-                <div>Content for Menu 3</div>
+                <div className="card-info  items-center mx-auto mt-10">
+                  <div className="flex justify-center   gap-10 right-image">
+                    <div className=" box  flex flex-col   text-center ">
+                      <div className="card-icon flex justify-center">
+                        <MdGames />
+                      </div>
+                      <span>Nintendo Switch lineup</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <MdCompareArrows />
+                      </div>
+                      <span>Compare systems</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <MdOnlinePrediction />
+                      </div>
+                      <span>Online service</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <LuGamepad />
+                      </div>
+                      <span>Accessories</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <FaShop />
+                      </div>
+                      <span>Shop systems</span>
+                    </div>
+                  </div>
+                </div>
               </MegaMenu>
             </li>
             <li>
@@ -284,7 +353,6 @@ const NavMenu = () => {
                 </span>
                 <span>Play Nintendo</span>
                 <span className="arrow-icon">
-                  
                   <FaChevronDown
                     className={`arrow transform transition-transform duration-300  `}
                   />
@@ -293,8 +361,24 @@ const NavMenu = () => {
               <MegaMenu
                 onClose={handleCloseMegaMenu}
                 isOpenMenu={activeMenu === "menu5" ? true : false}
+                className="h-2"
               >
-                <div>Content for Menu 4</div>
+                <div className="card-info  items-center mx-auto mt-10">
+                  <div className="flex justify-center   gap-10 right-image">
+                    <div className=" box  flex flex-col   text-center ">
+                      <div className="card-icon flex justify-center">
+                        <FaFaceGrinWide />
+                      </div>
+                      <span>For kids</span>
+                    </div>
+                    <div className=" box flex flex-col   text-center">
+                      <div className="card-icon flex justify-center">
+                        <RiParentFill />
+                      </div>
+                      <span>For parents</span>
+                    </div>
+                  </div>
+                </div>
               </MegaMenu>
             </li>
           </ul>

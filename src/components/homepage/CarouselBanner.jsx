@@ -20,80 +20,25 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
+import data from "../../views/Data";
+
 const CarouselBanner = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const LightBoxSliders = [
-    {
-      src: require("../../assets/images/banner-carousel/1.jpg"),
-      title: "Puppy in sunglasses",
-      description: "Mollie Sivaram",
-    },
-    {
-      src: require("../../assets/images/banner-carousel/2.jpg"),
-      title: "Miami Beach",
-      description:
-        "Clark Van Der Beken\n\nSouth Beach, Miami Beach, Florida, United States",
-    },
-    {
-      src: require("../../assets/images/banner-carousel/3.jpg"),
-      title: "Flamingo",
-      description: "Vicko Mozara\n\nVeliki zali, Dubravica, Croatia",
-    },
-    {
-      type: "video",
-      title: "Big Buck Bunny",
-      description:
-        "The Peach Open Movie Project\n\nBlender Institute, Netherlands",
-      width: 1280,
-      height: 720,
-      poster:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
-      sources: [
-        {
-          src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-          type: "video/mp4",
-        },
-      ],
-    },
-    {
-      src: require("../../assets/images/banner-carousel/4.jpg"),
-      title: "Flamingo",
-      description: "Vicko Mozara\n\nVeliki zali, Dubravica, Croatia",
-    },
-  ];
+
   const [LightBoxOpen, setLightBoxOpen] = useState(false);
   const [Index, setIndex] = useState(0);
   const openLightBox = (index) => {
     setIndex(index);
     setLightBoxOpen(true);
   };
-  const breakpoints = {
-    // when window width is >= 480px
-    0: {
-      slidesPerView: 2,
-      spaceBetween: 10,
-    },
-    // when window width is >= 640px
-    500: {
-      slidesPerView: 3,
-      spaceBetween: 20,
-    },
-    992: {
-      slidesPerView: 4,
-      spaceBetween: 20,
-    },
-    1168: {
-      slidesPerView: 4,
-      spaceBetween: 30,
-    },
-  };
+
   return (
     <>
       <div className="mb-20">
         <Lightbox
           open={LightBoxOpen}
           close={() => setLightBoxOpen(false)}
-          slides={LightBoxSliders}
+          slides={data.LightBoxSliders}
           plugins={[Captions, Fullscreen, Slideshow, Thumbnails, Video, Zoom]}
           index={Index}
         />
@@ -132,7 +77,6 @@ const CarouselBanner = () => {
                     />
                   </SwiperSlide>
                   <SwiperSlide>
-                    {" "}
                     <video controls>
                       <source
                         src={require("../../assets/videos/video1.mp4")}
@@ -155,7 +99,7 @@ const CarouselBanner = () => {
                   spaceBetween={30}
                   slidesPerView={4}
                   navigation
-                  breakpoints={breakpoints}
+                  breakpoints={data.carouselBreakpoints}
                   loop={true}
                 >
                   <SwiperSlide>
@@ -200,7 +144,7 @@ const CarouselBanner = () => {
                 <h2 className="mb-6 large-bold-text">Stardew Valley</h2>
                 <div className="flex justify-between mb-6">
                   <span className="large-bold-text">$14.99</span>
-                  <FaRegHeart className="heart-icon" />
+                  <FaRegHeart className="heart-icon heart-animation" />
                 </div>
                 <div className="flex mb-6">
                   <img

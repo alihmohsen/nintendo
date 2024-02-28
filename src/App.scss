@@ -352,7 +352,7 @@ header{
     right: 2%;
     svg{
       &:hover{
-        color: $primary-color;
+        color: $primary-color !important; /* Change to your desired heart color */
       }
     }
   }
@@ -393,7 +393,11 @@ header{
     pointer-events: auto; 
     height: 300px;
     max-height: none; 
+    &.h-2{
+      height: 180px;
+    }
   }
+ 
 
   .close-mega-box-button{
     position: absolute;
@@ -424,6 +428,43 @@ header{
       padding: 3px 0px;
     }
   }
+  .card-info{
+    min-width: 600px;
+    max-width: 1200px;
+    .box{
+      cursor: pointer;
+      width: 120px;
+      pointer-events: all;
+      &:hover{
+        color: $primary-color;
+        .card-icon{
+          background-color: $primary-color;
+        }
+        svg{
+          color: white ;
+        }
+      }      
+      
+    }
+    .card-icon{
+      transition: background-color 100ms ease-in-out 20ms;
+      background-color: white;
+      color: rgb(71, 71, 71) !important;
+      border: 1px solid lightgray;
+      border-radius: 18px;
+      padding: 12px 15px;
+      width: 100%;
+      svg{
+        font-size: 45px;
+      }
+    }
+    span{
+      margin:10px 0px ;
+      font-size: 14px;
+    }
+
+  }
+
 }
 .shop-all-btn{
   padding: 10px 25px;
@@ -1324,5 +1365,26 @@ header{
         margin:15px 0px ;
       }
     }
+  }
+}
+
+
+.heart-animation{
+  &:hover{
+    animation: shine 1.5s infinite;
+  }
+}
+@keyframes shine {
+  0% {
+    color: #ff6b6b; /* Start color */
+    transform: scale(1);
+  }
+  50% {
+    color: #fcb0b0; /* Mid color */
+    transform: scale(1.2);
+  }
+  100% {
+    color: #ff6b6b; /* End color */
+    transform: scale(1);
   }
 }

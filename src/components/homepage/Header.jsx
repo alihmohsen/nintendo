@@ -4,9 +4,9 @@ import NavMenu from "./NavMenu";
 import ServicesNavbar from "./ServicesNav";
 import { Link } from "react-router-dom";
 import { IoMdSearch } from "react-icons/io";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaRegHeart } from "react-icons/fa";
 import MobileNavbar from "./MobileNavbar";
-
+import data from "../../views/Data";
 const Header = () => {
   const [activeInputSearch, setActiveInputSearch] = useState(false);
   const [activeListCategories, setActiveListCategories] = useState(false);
@@ -17,66 +17,6 @@ const Header = () => {
   };
   const [selectedFilter, setSelectedFilter] = useState("All categories");
   const filters = ["All categories", "Popular", "Recent", "Favorites"];
-  const TrendingTopics = [
-    {
-      title: "Nintendo Switch™ - OLED Model: Mario Red Edition",
-      path: "/",
-    },
-    {
-      title: "Nintendo Switch",
-      path: "/",
-    },
-    {
-      title: "Super Mario Bros. Wonder",
-      path: "/",
-    },
-    {
-      title: "Nintendo Switch games",
-      path: "/",
-    },
-    {
-      title: "Zelda games",
-      path: "/",
-    },
-  ];
-  const StoreProducts = [
-    {
-      description: "Nintendo Switch™ - OLED Model: Mario Red Edition",
-      path: "/",
-      name: "Hardware",
-      isFavorite: false,
-      colorBar: "secondary",
-      image:
-        "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_200/ncom/My%20Nintendo%20Store/EN-US/Hardware/nintendo-switch-oled-model-mario-red-edition-112872/112872-nintendo-switch-oled-model-mario-red-edition-package-1200x675",
-    },
-    {
-      description: "Nintendo Switch",
-      path: "/",
-      name: "Nintendo Switch",
-      isFavorite: true,
-      colorBar: "primary",
-      image:
-        "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_200/ncom/software/switch/70010000068688/87e8aa5f1fdc950b88eae7d7c62ed185c8a6373c845090bbdb2e2cf039b38da1",
-    },
-    {
-      description: "Super Mario Bros. Wonder",
-      path: "/",
-      name: "Nintendo Switch",
-      isFavorite: false,
-      colorBar: "primary",
-      image:
-        "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_200/ncom/software/switch/70010000068683/fe4afe940b0e707798332e86f0af56cdbde48da59dc37cdfb8d59febb88ac72a",
-    },
-    {
-      description: "Nintendo Switch games",
-      path: "/",
-      name: "Nintendo Switch",
-      isFavorite: false,
-      colorBar: "primary",
-      image:
-        "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_200/ncom/software/switch/70010000068678/5b072b55e8a6993071b4cde9f74d9cf7aeac0b52141177efed6c8ce9b580a435",
-    },
-  ];
 
   const navbarRef = useRef(null);
   const megaMenuRef = useRef(null);
@@ -255,7 +195,7 @@ const Header = () => {
           <div className={` xl:w-1/3 ${activeInputSearch ? "open" : "closed"}`}>
             <h2 className="mb-2">{titles.trendingTopicsText}</h2>
             <div className="flex flex-col topic-box">
-              {TrendingTopics.map((topic, index) => (
+              {data.TrendingTopics.map((topic, index) => (
                 <Link key={index} to={topic.path}>
                   {topic.title}
                 </Link>
@@ -269,7 +209,7 @@ const Header = () => {
           >
             <h2 className="mb-2">{titles.TopStoreText}</h2>
             <div className="flex flex-wrap gap-4">
-              {StoreProducts.map((product, index) => (
+              {data.StoreProducts.map((product, index) => (
                 <div key={index} className=" relative">
                   <Link to={product.path} className=" flex flex-row  ">
                     <div className="flex  flex-row relative w-full">
@@ -292,51 +232,8 @@ const Header = () => {
                       </div>
                     </div>
                   </Link>
-                  <button className=" absolute">
-                    <svg
-                      viewBox="0 0 54 54"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      width="24"
-                      role="presentation"
-                      alt=""
-                      data-testid="heartspark"
-                      color="currentColor"
-                      size="24"
-                    >
-                      <g className="hearts">
-                        <path
-                          className="heart heart-outline"
-                          d="M27 38.9c-.4 0-.6-.1-.8-.4L16.7 29c-1.8-1.8-2.7-3.8-2.7-6 0-4.4 3.5-8 7.9-8 1.9 0 3.7.8 5.1 2.3 1.4-1.4 3.2-2.3 5.1-2.3 4.4 0 7.9 3.6 7.9 8 0 2.6-1.5 4.6-2.7 6.1l-9.5 9.4c-.2.3-.6.4-.8.4zm-5.1-21.4c-3.1 0-5.6 2.5-5.6 5.6 0 1.9 1.1 3.3 2 4.3l8.6 8.7 8.5-8.6c1.4-1.5 2.1-3 2.1-4.4 0-3.1-2.5-5.6-5.6-5.6-1.5 0-3 1-4.1 2.5-.5.6-1.4.6-1.9 0-1-1.6-2.4-2.5-4-2.5z"
-                        ></path>
-                        <path
-                          className="heart heart-filled"
-                          d="M32.1 15.1c-1.9 0-3.7.8-5.1 2.3-1.4-1.4-3.2-2.3-5.1-2.3-4.4 0-7.9 3.6-7.9 8 0 2.1.9 4.2 2.7 6l9.5 9.5c.2.2.5.4.8.4.2 0 .6-.1.8-.4l9.5-9.4c1.2-1.4 2.7-3.5 2.7-6.1 0-4.4-3.5-8-7.9-8z"
-                        ></path>
-                      </g>
-                      <g className="sparks">
-                        <path
-                          className="spark"
-                          d="M27 8V0M27 46v8"
-                          strokeWidth="2"
-                        ></path>
-                        <path
-                          className="spark"
-                          d="M41.171 12.828l5.657-5.657M12.829 12.828L7.171 7.172"
-                          strokeWidth="1.99998"
-                        ></path>
-                        <path
-                          className="spark"
-                          d="M46 27h8M8 27H0"
-                          strokeWidth="2"
-                        ></path>
-                        <path
-                          className="spark"
-                          d="M41.172 41.172l5.657 5.656M12.829 41.171l-5.657 5.657"
-                          strokeWidth="1.99998"
-                        ></path>
-                      </g>
-                    </svg>
+                  <button className="absolute">
+                    <FaRegHeart className="primary-icon-color heart-animation" />
                   </button>
                 </div>
               ))}
